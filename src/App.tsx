@@ -1,10 +1,24 @@
+import { Suspense } from "react"
+import routes from "./routes"
+import { Route, Routes } from "react-router-dom"
+import { Preloader } from "./utils/Preloader"
+import Header from "./components/shared/Header"
+import Footer from "./components/shared/Footer"
 
 
 function App() {
 
   return (
-    <main className='text-white bg-gray-950 h-screen w-full'>
-      Hello world
+    <main className='w-full min-h-screen'>
+      <Header />
+      <Suspense fallback={<Preloader />}>
+        <Routes>
+          {routes.map(({ path, component: Component }, index) => (
+            <Route key={index} index={path === "/"} path={path} element={<Component />} />
+          ))}
+        </Routes>
+      </Suspense>
+      <Footer />
     </main>
   )
 }
