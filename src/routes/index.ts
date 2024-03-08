@@ -4,7 +4,7 @@ import { lazy } from "react";
 type Route = {
     path: string;
     title: string;
-    component: any;
+    component: React.LazyExoticComponent<() => JSX.Element>;
 }
 type coreRoutes = Route[]
 
