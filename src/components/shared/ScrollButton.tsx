@@ -1,6 +1,7 @@
 import { animateScroll } from "react-scroll";
 import { ScrollToTopOptions } from "../../utils/ScrollToTop";
 import { Button } from "../atom/Button";
+import { MdDoubleArrow } from "react-icons/md";
 
 
 const ScrollButton = () => {
@@ -19,7 +20,7 @@ const ScrollButton = () => {
      sm:w-[30px] sm:h-[30px] sm:leading-[30px] sm:text-center sm:text-[16px] sm:right-[15px]
      xsm:w-[30px] xsm:h-[30px] xsm:leading-[30px] xsm:text-center xsm:text-[16px] xsm:right-[15px]
     ">
-            <i className="flaticon-right-arrow -rotate-90"></i>
+            <MdDoubleArrow className=" -rotate-90" />
         </Button>
     )
 }
