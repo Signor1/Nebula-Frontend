@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { animateScroll } from "react-scroll";
 
-type ScrollToTopOptions = {
+export type ScrollToTopOptions = {
     duration: number;
 }
 
