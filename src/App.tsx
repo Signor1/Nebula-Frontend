@@ -9,7 +9,7 @@ import Footer from "./components/shared/Footer"
 function App() {
 
   return (
-    <main className='w-full min-h-screen'>
+    <main className='w-full min-h-screen bg-bodyBg text-gray-100'>
       <Header />
       <Suspense fallback={<Preloader />}>
         <Routes>
