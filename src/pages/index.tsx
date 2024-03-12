@@ -1,8 +1,11 @@
+import HeroSection from "../components/home/HeroSection"
 
 
 const Home = () => {
     return (
-        <div>Home page</div>
+        <main className="w-full flex flex-col">
+            <HeroSection />
+        </main>
     )
 }
 
