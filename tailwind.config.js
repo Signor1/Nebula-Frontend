@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         barlow: ["Barlow", "sans-serif"],
+        belanosima: ["Belanosima", "sans-serif"],
       },
     },
   },
