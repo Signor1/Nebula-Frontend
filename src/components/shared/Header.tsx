@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import { ImageWrap } from "../atom/ImageWrap"
 import Logo from "../../assets/logo/logo.png";
-import { NavLinks } from "../../data/NavLinks";
+import { NavLinks } from "../../data/ContentData";
 import { FiSearch } from "react-icons/fi";
 import { Button } from "../atom/Button";
 import { GiCrossedSwords } from "react-icons/gi";
