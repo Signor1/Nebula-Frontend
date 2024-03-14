@@ -15,6 +15,16 @@ export default {
         barlow: ["Barlow", "sans-serif"],
         belanosima: ["Belanosima", "sans-serif"],
       },
+      screens: {
+        "2xl": {
+          min: "1500px",
+          max: "1800px",
+        },
+        xxl: {
+          min: "1400px",
+          max: "1500px",
+        },
+      },
     },
   },
   plugins: [require("tailwind-clip-path")],

@@ -33,7 +33,7 @@ const HeroSection = () => {
                     </Button>
                 </aside>
                 <aside className="flex-1 flex flex-col justify-end items-center">
-                    <ImageWrap image={SliderImg} className="w-[75%] md:w-[80%] lg:w-[75%]" alt="Game-Avatar" />
+                    <ImageWrap image={SliderImg} className="w-[75%] md:w-[80%] lg:w-[75%] xxl:w-[60%] 2xl:w-[60%]" alt="Game-Avatar" />
                 </aside>
             </main>
 
