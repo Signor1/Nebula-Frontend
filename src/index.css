@@ -61,3 +61,78 @@
 .searchWave::after {
     background: url('./assets/img/search_wave.png');
 }
+
+img[alt^="Shape"] {
+    animation: blink 2s infinite linear;
+}
+
+img[alt="Shape01"] {
+    animation-delay: 0.2s;
+}
+
+img[alt="Shape02"] {
+    animation-delay: 0.4s;
+}
+
+img[alt="Shape03"] {
+    animation-delay: 0.2s;
+}
+
+img[alt="Shape03"] {
+    animation-delay: 0.6s;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.slider-cta-btn {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 48px;
+    min-width: 165px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-image: url('/src/assets/svg/downloadwhite.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.slider-cta-btn::before {
+    position: absolute;
+    inset: 0px;
+    z-index: -1;
+    --tw-bg-opacity: 1;
+    background-color: rgb(69 248 130 / var(--tw-bg-opacity));
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    --tw-content: '';
+    content: var(--tw-content);
+    -webkit-clip-path: polygon(27px 0, calc(85% - 3px) 0, 100% 50%, calc(85% - 1px) 100%, 24px 100%, 0% 50%);
+    clip-path: polygon(27px 0, calc(85% - 3px) 0, 100% 50%, calc(85% - 1px) 100%, 24px 100%, 0% 50%);
+}
+
+.slider-cta-btn:hover {
+    --tw-text-opacity: 1;
+    color: rgb(32 31 42 / var(--tw-text-opacity));
+}
+
+
+.slider-cta-btn:hover::before {
+    opacity: 1;
+}
