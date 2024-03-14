@@ -1,11 +1,12 @@
 import HeroSection from "../components/home/HeroSection"
+import MaxWrapper from "../components/shared/MaxWrapper"
 
 
 const Home = () => {
     return (
-        <main className="w-full flex flex-col">
+        <MaxWrapper className="w-full flex flex-col">
             <HeroSection />
-        </main>
+        </MaxWrapper>
     )
 }
 
