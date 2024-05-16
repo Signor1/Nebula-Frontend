@@ -20,12 +20,12 @@ const Creators = () => {
     const avatartList = useMemo(() => [Avatar1, Avatar2, Avatar3], []);
 
     return (
-        <MaxWrapper className="w-full flex justify-center py-24">
-            <section className="flex flex-wrap justify-center gap-6 w-full">
+        <MaxWrapper className="w-full flex justify-center md:py-24 py-16">
+            <section className="flex md:flex-row flex-col flex-wrap justify-center gap-6 w-full px-8 md:px-0">
                 {
                     creators.map((creator, index) => (
-                        <div key={index} className="w-4/12 basis-4/12 xxl:w-4/12 xxl:basis-4/12 xl:w-5/12 xl:basis-5/12 lg:w-6/12 lg:basis-6/12 md:w-9/12 md:basis-9/12 sm:w-full sm:basis-full flex items-center gap-4 p-6 bg-[#121a23] bg-[linear-gradient(0deg,#0c0e12_0%,rgba(31,41,53,0.36078)_100%)] rounded-md cursor-pointer border border-[rgba(76,76,76,0.2)] hover:border-[rgba(69,248,130,0.4)]">
-                            <ImageWrap image={imgList[index]} alt="Creator" className="w-[180px] h-[187px]" objectStatus="object-cover rounded-md" />
+                        <div key={index} className="flex md:flex-row flex-col gap-4 md:p-6 p-8 bg-[#121a23] bg-[linear-gradient(0deg,#0c0e12_0%,rgba(31,41,53,0.36078)_100%)] rounded-md cursor-pointer border border-[rgba(76,76,76,0.2)] hover:border-[rgba(69,248,130,0.4)]">
+                            <ImageWrap image={imgList[index]} alt="Creator" className="md:w-[180px] w-full h-[187px]" objectStatus="object-cover rounded-md" />
                             <div className="w-full h-full flex-1 flex-col justify-center items-start">
                                 <Text as="h4" className="uppercase text-gray-100 font-bold font-barlow text-xl">{creator.title}</Text>
                                 <div className="w-full flex gap-4 items-center my-4">

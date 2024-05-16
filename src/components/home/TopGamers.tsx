@@ -6,7 +6,17 @@ import tab3 from "../../assets/tab/about_tab03.png";
 import tab4 from "../../assets/tab/about_tab04.png";
 import tab5 from "../../assets/tab/about_tab05.png";
 import tab6 from "../../assets/tab/about_tab06.png";
+import tabImg1 from "../../assets/tab/about_img01.jpg"
+import tabImg2 from "../../assets/tab/about_img02.jpg"
+import tabImg3 from "../../assets/tab/about_img03.jpg"
+import tabImg4 from "../../assets/tab/about_img04.jpg"
+import tabImg5 from "../../assets/tab/about_img05.jpg"
+import tabImg6 from "../../assets/tab/about_img06.jpg"
+import feature1 from "../../assets/icon/features_icon01.png"
+import feature2 from "../../assets/icon/features_icon02.png"
+import feature3 from "../../assets/icon/features_icon03.png"
 import { useState } from "react";
+import { ImageWrap } from "../atom/ImageWrap";
 
 type tabButtonObj = {
     name: string,
@@ -39,6 +49,59 @@ const tabButton: tabButtonObj[] = [
     }
 ]
 
+type tabDataType = {
+    tab: string,
+    title: string,
+    rate: string,
+    text: string,
+    img: string
+}
+
+const tabData: tabDataType[] = [
+    {
+        tab: "tabOne",
+        title: "HUMAN GAME",
+        rate: "50%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg1
+    },
+    {
+        tab: "tabTwo",
+        title: "AXIE INFINITY",
+        rate: "60%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg2
+    },
+    {
+        tab: "tabThree",
+        title: "THE WALKING DEAD",
+        rate: "75%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg3
+    },
+    {
+        tab: "tabFour",
+        title: "THE DOGAMI",
+        rate: "65%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg4
+    },
+    {
+        tab: "tabFive",
+        title: "THE SANDBOX",
+        rate: "75%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg5
+    },
+    {
+        tab: "tabSix",
+        title: "PEGAXY HORSES",
+        rate: "85%",
+        text: "Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.",
+        img: tabImg6
+    }
+]
+
 const TopGamers = () => {
     const [activeTab, setActiveTab] = useState<string>(tabButton[0].name)
 
@@ -53,13 +116,13 @@ const TopGamers = () => {
                 <div className="container">
                     <div className="flex flex-wrap mx-[-15px]  justify-center ">
                         <div
-                            className="w-6/12 basis-6/12 xl:w-6/12 xl:basis-6/12 lg:w-7/12 lg:basis-7/12 md:w-10/12 md:basis-10/12 sm:w-full sm:basis-full  xsm:w-full xsm:basis-full relative px-[15px]">
+                            className="w-full relative md:px-[15px] px-6">
                             <div
                                 className="text-center mb-[60px] relative after:content-[''] after:block after:bg-myGreen after:w-[65px] after:h-[5px] after:mt-5 after:mb-0 after:mx-auto">
                                 <Text as="span"
                                     className="block uppercase text-[14px] tracking-[2px] font-semibold text-[#45f882] leading-none mt-0 mb-[7px] mx-0  sm:mt-0 sm:mb-2.5 sm:mx-0 xsm:mt-0 xsm:mb-2.5 xsm:mx-0">know
                                     about us</Text>
-                                <Text as="h3" className="title text-[45px] font-extrabold tracking-[1px] m-0
+                                <Text as="h3" className=" md:text-[45px] text-center mt-2 text-4xl font-extrabold tracking-[1px] m-0
                             sm:text-[35px] sm:leading-[1.1]
                             xsm:text-[35px] uppercase xsm:leading-[1.1]
                             ">top rated steamers</Text>
@@ -97,6 +160,63 @@ const TopGamers = () => {
 
                             </ul>
                         </div>
+                    </div>
+
+                    {/* TAB CONTENT */}
+                    <div className="relative md:mx-4 overflow-hidden mt-20 mb-0 after:content-[''] after:absolute after:w-full after:h-px after:opacity-[0.329] after:left-0 after:bottom-0                 
+                after:bg-[linear-gradient(45deg,rgba(2,0,36,0)0%,#45f882_100%)]">
+
+                        {
+                            tabData.map((tab, index) => (
+                                <div className={`md:flex-row flex-col flex-wrap justify-center transition-all duration-200 ${activeTab === tab.tab ? "flex" : "hidden"}`} key={index}>
+                                    <ImageWrap
+                                        className="w-full xl:w-5/12 lg:w-10/12 md:w-full relative px-[15px]" image={tab.img} alt={tab.title} objectStatus="lg:w-full lg:h-full lg:object-cover lg:mb-[35px] md:w-full md:h-[350px] md:object-cover md:mb-[35px] sm:mb-[35px] xsm:mb-[35px] xsm:h-auto xsm:w-full" />
+                                    <div
+                                        className="w-full xl:w-7/12 lg:w-10/12 md:w-full  relative px-[15px]">
+                                        <div className="w-full flex-wrap flex h-full flex-col">
+                                            <section className="w-full grid md:grid-cols-5 gap-3">
+                                                <div className="flex flex-col md:col-span-3">
+                                                    <Text as="h4" className="uppercase font-bold font-barlow text-[30px] mt-0 mb-0.5 mx-0">{tab.title}</Text>
+                                                    <Text as={`span`}
+                                                        className="uppercase font-barlow block text-[20px] font-semibold text-[#ffbe18] mt-0 mb-[18px] mx-0 font-Barlow">rate{" "}{tab.rate}</Text>
+                                                    <Text as="p" className="m-0">{tab.text}</Text>
+                                                </div>
+                                                <div className="md:col-span-2">
+                                                    <ul className="m-0 p-0 ">
+                                                        <li
+                                                            className="bg-gradient-to-r from-[#1f2935_0%] via-[transparent_100%] to-[#10181f_100%] shadow-[0px_3px_7px_0px_rgba(0,0,0,0.21)] flex items-center text-[16px] font-bold translate-x-0  transition-[0.3s] duration-500 mt-0 mb-[11px] mx-0 px-[13px] py-[7px] rounded-[7px] hover:-translate-x-2.5 font-Barlow">
+                                                            <img className=" mr-[13px]"
+                                                                src={feature1} alt="img" /> Chichi
+                                                            Dragon Ball
+                                                        </li>
+                                                        <li
+                                                            className="bg-gradient-to-r from-[#1f2935_0%] via-[transparent_100%] to-[#10181f_100%] shadow-[0px_3px_7px_0px_rgba(0,0,0,0.21)] flex items-center text-[16px] font-bold translate-x-0  transition-[0.3s] duration-500 mt-0 mb-[11px] mx-0 px-[13px] py-[7px] rounded-[7px] hover:-translate-x-2.5 font-Barlow">
+                                                            <img className="mr-[13px]"
+                                                                src={feature2} alt="img" /> Space
+                                                            Babe Night
+                                                        </li>
+                                                        <li
+                                                            className="bg-gradient-to-r from-[#1f2935_0%] via-[transparent_100%] to-[#10181f_100%] shadow-[0px_3px_7px_0px_rgba(0,0,0,0.21)] flex items-center text-[16px] font-bold translate-x-0  transition-[0.3s] duration-500 mt-0 mb-[11px] mx-0 px-[13px] py-[7px] rounded-[7px] m-0 hover:-translate-x-2.5 font-Barlow">
+                                                            <img className=" mr-[13px]"
+                                                                src={feature3} alt="img" /> Dragon
+                                                            Ball
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </section>
+                                            <div className="md:mt-auto mt-3">
+                                                <div
+                                                    className="w-full grid grid-cols-3 gap-2">
+                                                    <a className=" block bg-[#1f2935] bg-[linear-gradient(0deg,#10181f_0%,_transparent_0%,#141a20_100%)] uppercase md:text-[16px] text-[14px] font-bold text-[#adb0bc] text-center tracking-[1px] md:px-[30px] px-[15px] py-[25px] hover:text-[#45f882] font-Barlow" href="">Dragon Ball</a>
+                                                    <a className=" block bg-[#1f2935] bg-[linear-gradient(0deg,#10181f_0%,_transparent_0%,#141a20_100%)] uppercase md:text-[16px] text-[14px] font-bold text-[#adb0bc] text-center tracking-[1px] md:px-[30px] px-[15px] py-[25px] hover:text-[#45f882] font-Barlow" href="">nft market</a>
+                                                    <a className=" block bg-[#1f2935] bg-[linear-gradient(0deg,#10181f_0%,_transparent_0%,#141a20_100%)] uppercase md:text-[16px] text-[14px] font-bold text-[#adb0bc] text-center tracking-[1px] md:px-[30px] px-[15px] py-[25px] hover:text-[#45f882] font-Barlow" href="">support</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </main>

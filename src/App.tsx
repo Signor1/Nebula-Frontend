@@ -4,7 +4,8 @@ import { Route, Routes } from "react-router-dom"
 import { Preloader } from "./utils/Preloader"
 import Header from "./components/shared/Header"
 import Footer from "./components/shared/Footer"
-
+import ScrollButton from "./components/shared/ScrollButton"
+import 'react-multi-carousel/lib/styles.css';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
+      <ScrollButton />
     </main>
   )
 }
