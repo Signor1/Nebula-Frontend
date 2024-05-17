@@ -23,6 +23,14 @@ const Header = () => {
         setOpenMenu(!openMenu);
     }
 
+    useEffect(() => {
+        if (openMenu) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    })
+
     const handleSearchClick = () => {
         setOpenSearch(!openSearch);
     }

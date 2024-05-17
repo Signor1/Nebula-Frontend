@@ -15,8 +15,9 @@ import tabImg6 from "../../assets/tab/about_img06.jpg"
 import feature1 from "../../assets/icon/features_icon01.png"
 import feature2 from "../../assets/icon/features_icon02.png"
 import feature3 from "../../assets/icon/features_icon03.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageWrap } from "../atom/ImageWrap";
+import Carousel from "react-multi-carousel";
 
 type tabButtonObj = {
     name: string,
@@ -112,7 +113,8 @@ const TopGamers = () => {
 
     return (
         <section className="w-full bg-cover bg-area bg-[top-center] bg-no-repeat">
-            <main className="py-[130px]">
+            {/* TAB */}
+            <main className="md:py-[130px] py-24">
                 <div className="container">
                     <div className="flex flex-wrap mx-[-15px]  justify-center ">
                         <div
@@ -220,8 +222,100 @@ const TopGamers = () => {
                     </div>
                 </div>
             </main>
+            {/* End of Tab */}
+
+            {/* Slides */}
+            <main className="w-full pb-16 overflow-x-hidden">
+                <Slides />
+            </main>
         </section>
     )
 }
 
 export default TopGamers
+
+
+
+import gallery1 from "../../assets/gallery/gallery01.jpg"
+import gallery2 from "../../assets/gallery/gallery02.jpg"
+import gallery3 from "../../assets/gallery/gallery03.jpg"
+import gallery4 from "../../assets/gallery/gallery04.jpg"
+import gallery5 from "../../assets/gallery/gallery05.jpg"
+
+const Slides = () => {
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 3,
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 1,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 1,
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+        },
+    };
+
+    const slideData = [
+        {
+            img: gallery1,
+            title: "DOTA 2 TOURNAMENT",
+            rate: "RATE 85%"
+        },
+        {
+            img: gallery2,
+            title: "DOTA 2 TOURNAMENT",
+            rate: "RATE 85%"
+        },
+        {
+            img: gallery3,
+            title: "DOTA 2 TOURNAMENT",
+            rate: "RATE 85%"
+        },
+        {
+            img: gallery4,
+            title: "DOTA 2 TOURNAMENT",
+            rate: "RATE 85%"
+        },
+        {
+            img: gallery5,
+            title: "DOTA 2 TOURNAMENT",
+            rate: "RATE 85%"
+        }
+    ]
+
+    const [isCenter, setIsCenter] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (window.innerWidth > 380) {
+            setIsCenter(true)
+        } else {
+            setIsCenter(false)
+        }
+    }, [])
+
+
+    return (
+        <Carousel responsive={responsive} centerMode={isCenter} infinite={true} showDots={true} >
+            {
+                slideData.map((item, index) => (
+                    <div className="w-full flex flex-col gap-4 slide" key={index}>
+                        <ImageWrap alt={item.title} image={item.img} className="w-full md:h-[400px] h-[200px] image" objectStatus="object-cover" />
+                        <div className="w-full content flex items-center justify-between md:px-8 pb-12">
+                            <Text as="h3" className="md:text-xl text-sm font-bold">{item.title}</Text>
+                            <Text as="span" className="md:text-base text-xs font-medium text-gray-500">{item.rate}</Text>
+                        </div>
+                    </div>
+                ))
+            }
+
+        </Carousel>
+    )
+}
