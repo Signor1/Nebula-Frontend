@@ -47,3 +47,59 @@ export const creators: creatorObj[] = [
     amount: "4.200",
   },
 ];
+
+// footer links
+
+export const quickLinks: NavArray = [
+  {
+    name: "Gaming",
+    path: "/",
+  },
+  {
+    name: "Product",
+    path: "/",
+  },
+  {
+    name: "All NFTs",
+    path: "/",
+  },
+  {
+    name: "Social Network",
+    path: "/",
+  },
+  {
+    name: "Domain Names",
+    path: "/",
+  },
+  {
+    name: "Collectibles",
+    path: "/",
+  },
+];
+
+export const support: NavArray = [
+  {
+    name: "Setting & Privacy",
+    path: "/",
+  },
+  {
+    name: "Help & Support",
+    path: "/",
+  },
+  {
+    name: "Live Auction",
+    path: "/",
+  },
+  {
+    name: "Item Detail",
+    path: "/",
+  },
+  {
+    name: "24/7 Support",
+    path: "/",
+  },
+  {
+    name: "Our News",
+    path: "/",
+  },
+];

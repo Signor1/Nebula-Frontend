@@ -34,7 +34,7 @@ const Creators = () => {
                                     <Text as="span" className="flex border-l-2 uppercase border-gray-500 text-sm pl-4">creator</Text>
                                 </div>
 
-                                <div className="w-full py-4 flex justify-between px-4 items-center rounded-md border border-[rgba(76,76,76,0.4)]">
+                                <div className="w-full py-4 flex justify-between px-4 items-center gap-4 rounded-md border border-[rgba(76,76,76,0.4)]">
                                     <Text as="p" className="flex items-center gap-2 font-bold text-gray-100">
                                         {creator.amount}
                                         <Text as="span" className=" text-myYellow font-bold font-barlow text-lg">ETH</Text>
