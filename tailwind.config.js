@@ -7,7 +7,7 @@ export default {
     extend: {
       colors: {
         bodyBg: "#101018",
-        navBg: "0f161b",
+        navBg: "#0f161b",
         myBlack: "#201f2a",
         myGreen: "#45f882",
         myYellow: "#ffbe18",

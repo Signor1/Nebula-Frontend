@@ -1,8 +1,11 @@
+import HeroSection from "../components/about/HeroSection"
 
 
 const About = () => {
     return (
-        <div>about</div>
+        <main className="w-full flex flex-col">
+            <HeroSection />
+        </main>
     )
 }
 

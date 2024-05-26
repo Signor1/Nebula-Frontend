@@ -35,65 +35,85 @@ const Header = () => {
         setOpenSearch(!openSearch);
     }
 
+    const [isNavVisible, setNavIsVisible] = useState(false);
+
+    useEffect(() => {
+        const toggleNavVisibility = () => {
+            if (window.scrollY > 200) {
+                setNavIsVisible(true);
+            } else {
+                setNavIsVisible(false);
+            }
+        };
+
+        window.addEventListener('scroll', toggleNavVisibility);
+
+        return () => {
+            window.removeEventListener('scroll', toggleNavVisibility);
+        };
+    }, []);
+
     return (
-        <header className="w-full relative bg-navBg flex justify-between items-center py-4 md:px-8 px-3">
-            <Link to='/'>
-                <ImageWrap className="md:w-[180px] w-[130px]" objectStatus="object-cover" alt="logo" image={Logo} />
-            </Link>
+        <header className={`w-full h-auto  ${isNavVisible ? "sticky top-0 left-0 z-[80] bg-navBg" : "static"}`}>
+            <div className="w-full relative bg-navBg flex justify-between items-center py-4 md:px-8 px-3">
+                <Link to='/'>
+                    <ImageWrap className="md:w-[180px] w-[130px]" objectStatus="object-cover" alt="logo" image={Logo} />
+                </Link>
 
-            <ul className="lg:flex hidden items-center gap-8">
-                {
-                    NavLinks.map(({ name, path }, index) => (
-                        <li className="block relative list-none group" key={index}>
-                            <Link className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
-                        </li>
-                    ))
-                }
-            </ul>
+                <ul className="lg:flex hidden items-center gap-8">
+                    {
+                        NavLinks.map(({ name, path }, index) => (
+                            <li className="block relative list-none group" key={index}>
+                                <Link className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
+                            </li>
+                        ))
+                    }
+                </ul>
 
-            <aside className="flex items-center lg:gap-6 gap-2">
-                <Button className="text-gray-100 lg:flex hidden text-xl font-bold hover:text-myGreen" type="button" >
-                    <FiSearch onClick={handleSearchClick} />
-                </Button>
-                <Button className="tg-border-btn text-gray-100 text-[0.7rem] font-bold font-barlow px-4 py-2 flex justify-center items-center">
-                    Connect Wallet
-                </Button>
-                <Button className="lg:hidden flex text-3xl border-2 p-1 border-myGreen font-bold text-myGreen" type="button">
-                    <IoMdMenu onClick={handleToggle} />
-                </Button>
-            </aside>
-            <Search openSearch={openSearch} setOpenSearch={setOpenSearch} handleSearch={handleSearchClick} />
+                <aside className="flex items-center lg:gap-6 gap-2">
+                    <Button className="text-gray-100 lg:flex hidden text-xl font-bold hover:text-myGreen" type="button" >
+                        <FiSearch onClick={handleSearchClick} />
+                    </Button>
+                    <Button className="tg-border-btn text-gray-100 text-[0.7rem] font-bold font-barlow px-4 py-2 flex justify-center items-center">
+                        Connect Wallet
+                    </Button>
+                    <Button className="lg:hidden flex text-3xl border-2 p-1 border-myGreen font-bold text-myGreen" type="button">
+                        <IoMdMenu onClick={handleToggle} />
+                    </Button>
+                </aside>
+                <Search openSearch={openSearch} setOpenSearch={setOpenSearch} handleSearch={handleSearchClick} />
 
-            {/* Mobile */}
-            <div className={`fixed top-0 z-[999] w-full h-screen bg-bodyBg/50 transition-all duration-[500ms] ease-[cubic-bezier(0.86,0,0.07,1)] lg:hidden flex justify-end ${openMenu ? "left-0" : "left-[100%]"}`}>
-                <div className={`w-[80%] h-full bg-bodyBg border-l-2 border-myGreen/10 flex flex-col gap-10 transition-all duration-[500ms] ease-[cubic-bezier(0.86,0,0.07,1)] px-6 py-8 delay-300 ${openMenu ? "translate-x-0" : "translate-x-full"}`}>
-                    <header className="flex justify-between items-center w-full">
-                        <Link to='/'>
-                            <ImageWrap className="md:w-[180px] w-[130px]" objectStatus="object-cover" alt="logo" image={Logo} />
-                        </Link>
-                        <Button type="button" className="text-2xl text-myGreen">
-                            <GiCrossedSwords onClick={handleToggle} />
-                        </Button>
-                    </header>
+                {/* Mobile */}
+                <div className={`fixed top-0 z-[99] w-full h-screen bg-bodyBg/50 transition-all duration-[500ms] ease-[cubic-bezier(0.86,0,0.07,1)] lg:hidden flex justify-end ${openMenu ? "left-0" : "left-[100%]"}`}>
+                    <div className={`w-[80%] h-full bg-bodyBg border-l-2 border-myGreen/10 flex flex-col gap-10 transition-all duration-[500ms] ease-[cubic-bezier(0.86,0,0.07,1)] px-6 py-8 delay-300 ${openMenu ? "translate-x-0" : "translate-x-full"}`}>
+                        <header className="flex justify-between items-center w-full">
+                            <Link to='/'>
+                                <ImageWrap className="md:w-[180px] w-[130px]" objectStatus="object-cover" alt="logo" image={Logo} />
+                            </Link>
+                            <Button type="button" className="text-2xl text-myGreen">
+                                <GiCrossedSwords onClick={handleToggle} />
+                            </Button>
+                        </header>
 
-                    <form className="relative w-full">
-                        <input type="text" placeholder="Search here..." className=" block w-full text-[14px] h-[45px] text-[#fff] pl-5 pr-[45px] py-2.5 border-none bg-[#182029] outline-none placeholder:text-[14px] placeholder:text-[#c7c7c7]
+                        <form className="relative w-full">
+                            <input type="text" placeholder="Search here..." className=" block w-full text-[14px] h-[45px] text-[#fff] pl-5 pr-[45px] py-2.5 border-none bg-[#182029] outline-none placeholder:text-[14px] placeholder:text-[#c7c7c7]
                                         focus:!ring-[none] focus:!border-none
                                         "/>
-                        <Button type="submit"
-                            className="absolute -translate-y-2/4 leading-none text-[#fff] p-0 border-[none] right-5 top-2/4 bg-transparent">
-                            <FiSearch />
-                        </Button>
-                    </form>
-                    <ul className="flex flex-col lg:hidden mt-6 items-start gap-8">
-                        {
-                            NavLinks.map(({ name, path }, index) => (
-                                <li className="block relative list-none group" key={index}>
-                                    <Link onClick={handleToggle} className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
-                                </li>
-                            ))
-                        }
-                    </ul>
+                            <Button type="submit"
+                                className="absolute -translate-y-2/4 leading-none text-[#fff] p-0 border-[none] right-5 top-2/4 bg-transparent">
+                                <FiSearch />
+                            </Button>
+                        </form>
+                        <ul className="flex flex-col lg:hidden mt-6 items-start gap-8">
+                            {
+                                NavLinks.map(({ name, path }, index) => (
+                                    <li className="block relative list-none group" key={index}>
+                                        <Link onClick={handleToggle} className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
@@ -123,7 +143,7 @@ export const Search = ({ openSearch, handleSearch }: SearchTypes) => {
 
     return (
         <div
-            className={`fixed h-screen w-full z-[99] top-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.86,0,0.07,1)] left-0 flex flex-col justify-center items-center  after:content-[''] after:absolute after:w-full after:h-[370px] searchWave after:bg-no-repeat after:bg-center after:bg-cover after:mt-0 after:left-0 after:bottom-0 after:z-10 ${openSearch ? " translate-y-0" : " -translate-y-full"}`}>
+            className={`fixed h-screen w-full z-[90] top-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.86,0,0.07,1)] left-0 flex flex-col justify-center items-center  after:content-[''] after:absolute after:w-full after:h-[370px] searchWave after:bg-no-repeat after:bg-center after:bg-cover after:mt-0 after:left-0 after:bottom-0 after:z-10 ${openSearch ? " translate-y-0" : " -translate-y-full"}`}>
             <div
                 className="content-[''] absolute h-screen w-full bg-[rgba(15,22,27,0.9)] transition-all duration-[1500ms] ease-[cubic-bezier(0.86,0,0.07,1)] z-[-1] left-0 top-0">
             </div>
