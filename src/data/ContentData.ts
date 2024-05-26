@@ -1,6 +1,11 @@
-type NavObject = {
+type NavWithPath = {
   name: string;
   path: string;
+};
+type NavObject = {
+  name: string;
+  path?: string;
+  dropdown?: NavWithPath[];
 };
 
 type NavArray = NavObject[];
@@ -15,8 +20,12 @@ export const NavLinks: NavArray = [
     path: "/about",
   },
   {
-    name: "Profile",
-    path: "/profile",
+    name: "Settings",
+    dropdown: [
+      { name: "Profile", path: "/profile" },
+      { name: "Purchase Character", path: "/profile/purchasecharacter" },
+      { name: "Your Characters", path: "/profile/yourcharacters" },
+    ],
   },
   {
     name: "Contact Us",

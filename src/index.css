@@ -383,3 +383,16 @@ img[alt="Game-Avatar"] {
         transform: translateX(50%);
     }
 }
+
+.dropdown-menu,
+.mobile-dropdown-menu {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.group:hover .dropdown-menu,
+.group:hover .mobile-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}

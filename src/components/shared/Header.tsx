@@ -62,9 +62,25 @@ const Header = () => {
 
                 <ul className="lg:flex hidden items-center gap-8">
                     {
-                        NavLinks.map(({ name, path }, index) => (
+                        NavLinks.map(({ name, path, dropdown }, index) => (
                             <li className="block relative list-none group" key={index}>
-                                <Link className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
+                                <Link
+                                    className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname === path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`}
+                                    to={path ? path : pathname}
+                                >
+                                    {name}
+                                </Link>
+                                {
+                                    dropdown && (
+                                        <ul className="dropdown-menu absolute z-10 -left-3 mt-3 w-48 bg-navBg border-b border-gray-800 rounded-md shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible">
+                                            {dropdown.map(({ path, name }, idx) => (
+                                                <li key={idx}>
+                                                    <Link to={path} className="block px-4 py-2 text-gray-200 hover:text-myGreen">{name}</Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )
+                                }
                             </li>
                         ))
                     }
@@ -104,11 +120,28 @@ const Header = () => {
                                 <FiSearch />
                             </Button>
                         </form>
-                        <ul className="flex flex-col lg:hidden mt-6 items-start gap-8">
+                        <ul className="flex flex-col lg:hidden mt-6 items-start gap-6">
                             {
-                                NavLinks.map(({ name, path }, index) => (
+                                NavLinks.map(({ name, path, dropdown }, index) => (
                                     <li className="block relative list-none group" key={index}>
-                                        <Link onClick={handleToggle} className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[42px] before:h-px before:-translate-y-2/4 before:rotate-0 before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s] before:mx-auto before:my-0 before:top-2/4 before:inset-x-0 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 group-hover:before:-translate-y-2/4 group-hover:before:rotate-[-40deg] ${pathname == path && "text-myGreen before:opacity-100 before:-translate-y-2/4 before:rotate-[-40deg]"}`} to={path}>{name}</Link>
+                                        <Link
+                                            className={`text-sm font-bold uppercase text-gray-100 block leading-none relative tracking-[0.8px] z-[1] font-barlow before:content-[''] before:absolute before:w-[7px] before:h-[7px]
+                                            before:rounded-full before:opacity-0 before:transition-all before:duration-[0.3s] before:ease-[ease-out] before:delay-[0s]  before:top-1 before:-left-3 before:bg-myGreen group-hover:text-myGreen  group-hover:before:opacity-100 ${pathname === path && "text-myGreen before:opacity-100"}`}
+                                            to={path ? path : pathname}
+                                        >
+                                            {name}
+                                        </Link>
+                                        {
+                                            dropdown && (
+                                                <ul className="mt-2 bg-bodyBg  py-2 ">
+                                                    {dropdown.map((item, idx) => (
+                                                        <li key={idx}>
+                                                            <Link to={item.path} className="block px-2 py-1 text-gray-400 text-sm uppercase font-medium hover:text-myGreen">{item.name}</Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )
+                                        }
                                     </li>
                                 ))
                             }
