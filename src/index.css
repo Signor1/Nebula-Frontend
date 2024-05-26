@@ -9,6 +9,11 @@
 @tailwind utilities;
 
 
+*::selection {
+    background-color: #45f882;
+    color: #101018;
+}
+
 .tg-border-btn {
     position: relative;
     z-index: 1;
@@ -320,5 +325,61 @@ img[alt="Game-Avatar"] {
 
     .slide .image {
         border: 5px solid #a9abb336;
+    }
+}
+
+.rotater img {
+    width: 100%;
+}
+
+.rotater {
+    animation: rotate 16s linear infinite;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.rotater:hover {
+    animation-play-state: paused;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotater svg {
+    padding: 20px;
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-33deg);
+    overflow: initial;
+    fill: transparent;
+}
+
+.rotater svg textPath {
+    fill: #fff;
+}
+
+.groupOfBars {
+    animation: moveBar 10s infinite linear;
+}
+
+@keyframes moveBar {
+
+    0%,
+    100% {
+        transform: translateX(-50px);
+    }
+
+    50% {
+        transform: translateX(50%);
     }
 }
