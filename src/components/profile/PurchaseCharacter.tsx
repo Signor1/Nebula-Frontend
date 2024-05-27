@@ -2,7 +2,17 @@
 import { toast } from 'sonner';
 import { ImageWrap } from "../atom/ImageWrap"
 import { Text } from "../atom/Text"
-
+import Img1 from "../../assets/img/Rhyno.png";
+import Img2 from "../../assets/img/Dragon.png";
+import Img3 from "../../assets/img/Godzilla.png";
+import Img4 from '../../assets/img/Hound.png';
+import Img5 from '../../assets/img/KomodoDragon.png';
+import Img6 from '../../assets/img/IceBeever.png';
+import Img7 from '../../assets/img/Fox.png';
+import Img8 from "../../assets/img/komodo.png"
+import { Button } from "../atom/Button"
+import { useState } from "react";
+import { HiOutlineArrowPath } from "react-icons/hi2";
 interface Character {
     id: number;
     name: string;
@@ -125,20 +135,10 @@ type DataType = {
     owner: string
 }
 
-import Img1 from "../../assets/img/Rhyno.png";
-import Img2 from "../../assets/img/Dragon.png";
-import Img3 from "../../assets/img/Godzilla.png";
-import Img4 from '../../assets/img/Hound.png';
-import Img5 from '../../assets/img/KomodoDragon.png';
-import Img6 from '../../assets/img/IceBeever.png';
-import Img7 from '../../assets/img/Fox.png';
-import Img8 from "../../assets/img/komodo.png"
-import { Button } from "../atom/Button"
-import { useState } from "react";
-import { HiOutlineArrowPath } from "react-icons/hi2";
 
 
-const data: DataType[] = [
+
+export const data: DataType[] = [
     {
         id: 1,
         name: "Pikachu",

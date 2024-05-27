@@ -284,15 +284,15 @@ img[alt="Game-Avatar"] {
     width: 100%;
 }
 
-.react-multi-carousel-item {
+.slide .react-multi-carousel-item {
     transform: scale(0.9);
 }
 
-.react-multi-carousel-item--active {
+.slide .react-multi-carousel-item--active {
     transform: scale(1);
 }
 
-.react-multi-carousel-item--active .content {
+.slide .react-multi-carousel-item--active .content {
     opacity: 1;
 }
 
