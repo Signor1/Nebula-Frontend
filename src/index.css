@@ -284,15 +284,15 @@ img[alt="Game-Avatar"] {
     width: 100%;
 }
 
-.slide .react-multi-carousel-item {
+.react-multi-carousel-item {
     transform: scale(0.9);
 }
 
-.slide .react-multi-carousel-item--active {
+.react-multi-carousel-item--active {
     transform: scale(1);
 }
 
-.slide .react-multi-carousel-item--active .content {
+.react-multi-carousel-item--active .content {
     opacity: 1;
 }
 
@@ -395,4 +395,10 @@ img[alt="Game-Avatar"] {
 .group:hover .mobile-dropdown-menu {
     opacity: 1;
     visibility: visible;
+}
+
+.battleGround {
+    background-image: url('./assets/arena/NebulaArena.jpg');
+    background-position: center;
+    background-size: cover;
 }
