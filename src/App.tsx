@@ -7,6 +7,7 @@ import Footer from "./components/shared/Footer"
 import ScrollButton from "./components/shared/ScrollButton"
 import 'react-multi-carousel/lib/styles.css';
 import { Toaster } from 'sonner';
+import PageNotFound from "./utils/PageNotFound"
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
           {routes.map(({ path, component: Component }, index) => (
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
       <Footer />
