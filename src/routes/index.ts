@@ -4,6 +4,8 @@ const Home = lazy(() => import("../pages/index"));
 const About = lazy(() => import("../pages/About"));
 const Contact = lazy(() => import("../pages/Contact"));
 const Profile = lazy(() => import("../pages/Profile"));
+const Purchase = lazy(() => import("../pages/Purchase"));
+const Characters = lazy(() => import("../pages/Characters"));
 
 type Route = {
   path: string;
@@ -32,6 +34,16 @@ const coreRoutes: coreRoutes = [
     path: "/profile",
     title: "Profile",
     component: Profile,
+  },
+  {
+    path: "/profile/purchasecharacter",
+    title: "Purchase Character",
+    component: Purchase,
+  },
+  {
+    path: "/profile/yourcharacters",
+    title: "Your Characters",
+    component: Characters,
   },
 ];
 

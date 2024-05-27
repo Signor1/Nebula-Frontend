@@ -6,7 +6,7 @@ import Header from "./components/shared/Header"
 import Footer from "./components/shared/Footer"
 import ScrollButton from "./components/shared/ScrollButton"
 import 'react-multi-carousel/lib/styles.css';
-
+import { Toaster } from 'sonner';
 function App() {
 
   return (
@@ -21,6 +21,7 @@ function App() {
       </Suspense>
       <Footer />
       <ScrollButton />
+      <Toaster richColors />
     </main>
   )
 }
