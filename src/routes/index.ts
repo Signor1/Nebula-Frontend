@@ -6,6 +6,7 @@ const Contact = lazy(() => import("../pages/Contact"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Purchase = lazy(() => import("../pages/Purchase"));
 const Characters = lazy(() => import("../pages/Characters"));
+const Arena = lazy(() => import("../pages/Arena"));
 
 type Route = {
   path: string;
@@ -44,6 +45,11 @@ const coreRoutes: coreRoutes = [
     path: "/profile/yourcharacters",
     title: "Your Characters",
     component: Characters,
+  },
+  {
+    path: "/arena",
+    title: "Arena",
+    component: Arena,
   },
 ];
 
