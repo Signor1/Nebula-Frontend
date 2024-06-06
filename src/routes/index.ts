@@ -9,6 +9,8 @@ const Characters = lazy(() => import("../pages/Characters"));
 const Arena = lazy(() => import("../pages/Arena"));
 const Strategy = lazy(() => import("../pages/Strategy"));
 const WarriorsSelection = lazy(() => import("../pages/Warriors"));
+const MarketPlace = lazy(() => import("../pages/MarketPlace"));
+const ProductDetail = lazy(() => import("../pages/ProductDetail"));
 
 type Route = {
   path: string;
@@ -62,6 +64,16 @@ const coreRoutes: coreRoutes = [
     path: "/selectWarriors",
     title: "Warriors",
     component: WarriorsSelection,
+  },
+  {
+    path: "/marketplace",
+    title: "Marketplace",
+    component: MarketPlace,
+  },
+  {
+    path: "/marketplace/:id",
+    title: "Product Detail",
+    component: ProductDetail,
   },
 ];
 

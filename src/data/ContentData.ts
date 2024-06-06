@@ -28,6 +28,10 @@ export const NavLinks: NavArray = [
     ],
   },
   {
+    name: "Market place",
+    path: "/marketplace",
+  },
+  {
     name: "Contact Us",
     path: "/contact",
   },
