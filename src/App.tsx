@@ -8,6 +8,7 @@ import ScrollButton from "./components/shared/ScrollButton"
 import 'react-multi-carousel/lib/styles.css';
 import { Toaster } from 'sonner';
 import PageNotFound from "./utils/PageNotFound"
+import ScrollToTop from "./utils/ScrollToTop"
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
+      <ScrollToTop />
       <ScrollButton />
       <Toaster richColors />
     </main>

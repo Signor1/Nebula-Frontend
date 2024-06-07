@@ -11,7 +11,7 @@ const ScrollToTop = () => {
 
     useEffect(() => {
         const scrollToTopOptions: ScrollToTopOptions = {
-            duration: 0,
+            duration: 500,
         };
         (animateScroll as { scrollToTop: (options: ScrollToTopOptions) => void }).scrollToTop(scrollToTopOptions);
     }, [pathname]);

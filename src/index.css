@@ -402,3 +402,18 @@ img[alt="Game-Avatar"] {
     background-position: center;
     background-size: cover;
 }
+
+.tinyLine {
+    height: 1px;
+    background: linear-gradient(to right, #201f2a, #3e3d45, #777, #3e3d45, #201f2a);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number].number-to-text {
+    -moz-appearance: textfield;
+}

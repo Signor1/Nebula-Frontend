@@ -6,7 +6,11 @@ import PriceRange from "./PriceRange";
 import { ListOfProducts, ProductType } from "./ProductData";
 import { useEffect, useMemo, useState } from "react";
 import ProductList from "./ProductList";
+import { animateScroll } from "react-scroll";
 
+export type ScrollToTopOptions = {
+    duration: number;
+}
 
 const Container = () => {
     const [data, setData] = useState<ProductType[]>(ListOfProducts);
@@ -25,11 +29,19 @@ const Container = () => {
 
     const handleFilterByCategory = (selectedCategory: string) => {
         setSelectedCategory(selectedCategory);
+        scrollUp();
     };
 
+    const scrollUp = () => {
+        const scrollToTopOptions: ScrollToTopOptions = {
+            duration: 500,
+        };
+        (animateScroll as { scrollToTop: (options: ScrollToTopOptions) => void }).scrollToTop(scrollToTopOptions);
+    }
+
     return (
-        <section className="w-full my-32 flex md:flex-row flex-col gap-8 lg:px-8 md:px-6 px-4">
-            <aside className="lg:w-[22%] md:w-[30%] w-full flex flex-col gap-8">
+        <section className="w-full lg:my-32 my-20 flex md:flex-row flex-col gap-8 lg:px-8 md:px-6 px-4">
+            <aside className="lg:w-[22%] md:w-[28%] w-full order-2 md:order-1 flex flex-col gap-8 mt-10 ">
                 {/* search */}
                 <div className="w-full grid grid-rows-2 border border-gray-500/60 h-28 rounded-md overflow-hidden">
                     <Text as={`h3`} className="w-full flex font-barlow pl-3 font-bold text-lg text-gray-100 gap-1 items-center uppercase"><FaCaretRight className=" text-myGreen" />Search</Text>
