@@ -4,22 +4,32 @@ import { FaCaretRight } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import PriceRange from "./PriceRange";
 import { ListOfProducts, ProductType } from "./ProductData";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductList from "./ProductList";
 
 
 const Container = () => {
-    const [data, setData] = useState<ProductType[]>([])
+    const [data, setData] = useState<ProductType[]>(ListOfProducts);
+    const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
     const categoryCounts = useMemo(() => countCategories(ListOfProducts), []);
 
+    useEffect(() => {
+        if (selectedCategory === 'all') {
+            setData(ListOfProducts);
+        } else {
+            setData(ListOfProducts.filter(product => product.category === selectedCategory));
+        }
+    }, [selectedCategory]);
+
+
     const handleFilterByCategory = (selectedCategory: string) => {
-        console.log(selectedCategory);
-    }
+        setSelectedCategory(selectedCategory);
+    };
 
     return (
         <section className="w-full my-32 flex md:flex-row flex-col gap-8 lg:px-8 md:px-6 px-4">
-            <aside className="lg:w-[25%] md:w-[40%] w-full flex flex-col gap-8">
+            <aside className="lg:w-[22%] md:w-[30%] w-full flex flex-col gap-8">
                 {/* search */}
                 <div className="w-full grid grid-rows-2 border border-gray-500/60 h-28 rounded-md overflow-hidden">
                     <Text as={`h3`} className="w-full flex font-barlow pl-3 font-bold text-lg text-gray-100 gap-1 items-center uppercase"><FaCaretRight className=" text-myGreen" />Search</Text>
@@ -42,6 +52,9 @@ const Container = () => {
                     <Text as={`h3`} className="w-full flex font-barlow pl-3 py-5 font-bold text-lg text-gray-100 gap-1 uppercase items-center"><FaCaretRight className=" text-myGreen" />categories</Text>
                     <div className="w-full flex flex-col justify-center items-center border-t border-gray-500/60 bg-myBlack">
                         <ul className="w-full list-none">
+                            <li key={'all'} className="w-full flex justify-between border-b border-gray-500/60 cursor-pointer py-4 px-5 items-center gap-2 last:border-none hover:bg-gray-700" onClick={() => handleFilterByCategory('all')}>
+                                <Text as="span" className="text-gray-200 font-semibold uppercase">All</Text>
+                            </li>
                             {Object.keys(categoryCounts).map((category) => (
                                 <li key={category} className="w-full flex justify-between border-b border-gray-500/60 cursor-pointer py-4 px-5 items-center gap-2 last:border-none hover:bg-gray-700" onClick={() => handleFilterByCategory(category)}>
                                     <Text as="span" className="text-gray-200 font-semibold uppercase">{category}</Text>
@@ -51,11 +64,10 @@ const Container = () => {
                         </ul>
                     </div>
                 </div>
-
             </aside>
 
             {/* list of products */}
-            <ProductList />
+            <ProductList data={data} />
         </section>
     )
 }
