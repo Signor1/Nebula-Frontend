@@ -51,27 +51,29 @@ const UserActivity = () => {
         setNftTokenId("")
     }
 
-    const formatAddress = (address: string | undefined) => {
+    const formatAddress = (address: string) => {
         return `${address?.slice(0, 6)}...${address?.slice(-4)}`
     }
 
     return (
 
         <MaxWrapper>
-            <section className="w-full flex flex-col gap-10 md:px-20 lg:px-28">
+            <section className="w-full flex flex-col gap-10 md:px-20 lg:px-28 px-4 mt-6 mb-10">
                 {/* first section */}
-                <div className="w-full bg-navBg py-6 px-5 my-6 flex flex-col rounded-md">
+                <div className="w-full bg-navBg py-6 px-5 flex flex-col rounded-md">
                     <div className="flex flex-col gap-4">
-                        <Text as="span" className="flex items-center gap-2 text-gray-400">
-                            <IoWalletOutline />
-                            Address
-                        </Text>
+                        <div className="w-full flex justify-between items-center">
+                            <Text as="span" className="flex items-center gap-2 text-gray-400">
+                                <IoWalletOutline />
+                                Address
+                            </Text>
+                        </div>
                         <Text as="h4" className="text-gray-100 text-lg md:text-2xl font-bold font-poppins">{formatAddress("0xbe03CE9d6001D27BE41fc87e3E3f777d04e70Fe2")}</Text>
                         <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
                             {/* Deposit */}
                             <Button onClick={() => setIsDepositModalOpen(true)} type="button" className="bg-myGreen text-gray-900 w-full py-2 rounded-md capitalize hover:bg-myYellow flex justify-center items-center gap-1">Deposit <MdOutlineArrowRightAlt /></Button>
                             {/* <!-- Deposit modal --> */}
-                            <div aria-hidden="true" className={`${isDepositModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
+                            <div className={`${isDepositModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
                                 <div className="relative p-4 w-full max-w-2xl max-h-full">
                                     {/* <!-- Modal content --> */}
                                     <div className="relative rounded-lg shadow bg-gray-800">
@@ -80,8 +82,8 @@ const UserActivity = () => {
                                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                                                 Deposit
                                             </h3>
-                                            <button onClick={() => setIsDepositModalOpen(false)} type="button" className="bg-transparent text-gray-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-hide="default-modal">
-                                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <button onClick={() => setIsDepositModalOpen(false)} type="button" className="bg-transparent text-gray-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white">
+                                                <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span className="sr-only">Close modal</span>
@@ -109,7 +111,7 @@ const UserActivity = () => {
                             {/* Transfer */}
                             <Button onClick={() => setIsTransferModalOpen(true)} type="button" className="bg-myGreen text-gray-900 w-full py-2 rounded-md capitalize hover:bg-myYellow flex justify-center items-center gap-1">Transfer <MdOutlineArrowRightAlt /></Button>
                             {/* <!-- Transfer modal --> */}
-                            <div aria-hidden="true" className={`${isTransferModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
+                            <div className={`${isTransferModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
                                 <div className="relative p-4 w-full max-w-2xl max-h-full">
                                     {/* <!-- Modal content --> */}
                                     <div className="relative rounded-lg shadow bg-gray-800">
@@ -119,7 +121,7 @@ const UserActivity = () => {
                                                 Transfer
                                             </h3>
                                             <button onClick={() => setIsTransferModalOpen(false)} type="button" className="bg-transparent text-gray-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-hide="default-modal">
-                                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span className="sr-only">Close modal</span>
@@ -152,7 +154,7 @@ const UserActivity = () => {
                             {/* Withdraw */}
                             <Button onClick={() => setIsWithdrawModalOpen(true)} type="button" className="bg-myGreen text-gray-900 w-full py-2 rounded-md capitalize hover:bg-myYellow flex justify-center items-center gap-1">Withdraw <MdOutlineArrowRightAlt /></Button>
                             {/* <!-- withdraw modal --> */}
-                            <div aria-hidden="true" className={`${isWithdrawModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
+                            <div className={`${isWithdrawModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
                                 <div className="relative p-4 w-full max-w-2xl max-h-full">
                                     {/* <!-- Modal content --> */}
                                     <div className="relative rounded-lg shadow bg-gray-800">
@@ -163,7 +165,7 @@ const UserActivity = () => {
                                             </h3>
 
                                             <button onClick={() => setIsWithdrawModalOpen(false)} type="button" className="bg-transparent text-gray-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-hide="default-modal">
-                                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span className="sr-only">Close modal</span>
@@ -191,7 +193,7 @@ const UserActivity = () => {
                             {/* NFT Transfer */}
                             <Button onClick={() => setIsNftTransferModalOpen(true)} type="button" className="bg-myGreen text-gray-900 w-full py-2 rounded-md capitalize hover:bg-myYellow flex justify-center items-center gap-1">NFT Transfer <MdOutlineArrowRightAlt /></Button>
                             {/* <!-- NFT Transfer modal --> */}
-                            <div aria-hidden="true" className={`${isNftTransferModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
+                            <div className={`${isNftTransferModalOpen ? "flex" : "hidden"} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}>
                                 <div className="relative p-4 w-full max-w-2xl max-h-full">
                                     {/* <!-- Modal content --> */}
                                     <div className="relative rounded-lg shadow bg-gray-800">
@@ -201,7 +203,7 @@ const UserActivity = () => {
                                                 NFT Transfer
                                             </h3>
                                             <button onClick={() => setIsNftTransferModalOpen(false)} type="button" className="bg-transparent text-gray-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-hide="default-modal">
-                                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span className="sr-only">Close modal</span>
@@ -246,6 +248,55 @@ const UserActivity = () => {
 
                         <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
                             <Text as="h6" className="text-gray-400 text-sm">Spent</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Recieved</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+                    </div>
+                </div>
+
+                {/* third section */}
+                <div className="w-full flex flex-col gap-2">
+                    <Text as="h4" className="text-gray-100 text-base md:text-lg font-poppins">Your voucher history</Text>
+                    <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Balance</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Spent</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Recieved</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+                    </div>
+                </div>
+
+                {/* fourth section */}
+                <div className="w-full flex flex-col gap-2">
+                    <Text as="h4" className="text-gray-100 text-base md:text-lg font-poppins">Your NFTs</Text>
+                    <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Sent</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Spent</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Recieved</Text>
                             <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
                         </div>
 
