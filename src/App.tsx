@@ -12,7 +12,7 @@ import ScrollToTop from "./utils/ScrollToTop"
 function App() {
 
   return (
-    <main className='w-full min-h-screen bg-bodyBg text-gray-100'>
+    <main className='w-full min-h-screen bg-bodyBg text-gray-100 relative'>
       <Header />
       <Suspense fallback={<Preloader />}>
         <Routes>
