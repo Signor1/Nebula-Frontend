@@ -58,7 +58,7 @@ const UserActivity = () => {
     return (
 
         <MaxWrapper>
-            <section className="w-full flex flex-col md:px-20 lg:px-28">
+            <section className="w-full flex flex-col gap-10 md:px-20 lg:px-28">
                 {/* first section */}
                 <div className="w-full bg-navBg py-6 px-5 my-6 flex flex-col rounded-md">
                     <div className="flex flex-col gap-4">
@@ -235,8 +235,25 @@ const UserActivity = () => {
                 </div>
 
                 {/* second section */}
-                <div className="w-full flex flex-col">
-                    <h3>Your token detail on Nebula</h3>
+                <div className="w-full flex flex-col gap-2">
+                    <Text as="h4" className="text-gray-100 text-base md:text-lg font-poppins">Your token detail on Nebula</Text>
+                    <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Balance</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Spent</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+
+                        <div className="w-full bg-navBg py-4 px-4 flex flex-col gap-2 items-start rounded-md">
+                            <Text as="h6" className="text-gray-400 text-sm">Recieved</Text>
+                            <Text as="h1" className="text-gray-100 text-2xl md:text-5xl font-bold font-poppins">00</Text>
+                        </div>
+                    </div>
                 </div>
             </section>
         </MaxWrapper>
